@@ -95,26 +95,12 @@ def all_supplies_in_holidays(holiday_hash)
   holiday_hash.each do |season, holidays|
     final_string << "#{season.to_s.capitalize}:\n"
     holidays.each do |holiday, items|
-      final_string << "#{holiday.to_s.split('_').collect {|word| word.capitalize!}.join(' ')}: "
-      if holiday == :christmas
-        items.each do |item|
-          if item == items[0]
-            final_string << "#{item}, "
-          else
-            final_string << "#{item}\n  "
-          end
-        end
-      elsif holiday == :new_years
-        items.each do |item|
+      final_string << "  #{holiday.to_s.split('_').collect {|word| word.capitalize!}.join(' ')}: "
+      items.each do |item|
+        if item == items[0] && items.size > 1
+          final_string << "#{item}, "
+        else
           final_string << "#{item}\n"
-        end
-      else
-        items.each do |item|
-          if item == items[0] && items.size > 1
-            final_string << "#{item}, "
-          else
-            final_string << "#{item}\n"
-          end
         end
       end
     end
