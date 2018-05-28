@@ -93,7 +93,7 @@ def all_supplies_in_holidays(holiday_hash)
   #   Memorial Day: BBQ
   final_string = ""
   holiday_hash.each do |season, holidays|
-    final_string << "#{season.to_s.capitalize}:\n  "
+    final_string << "#{season.to_s.capitalize}:\n"
     holidays.each do |holiday, items|
       final_string << "#{holiday.to_s.split('_').collect {|word| word.capitalize!}.join(' ')}: "
       if holiday == :christmas
